@@ -1,44 +1,22 @@
 <template>
-	<view class="content">
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+  <div id="app">
+    <h2>物品清单</h2>
+    <ProductList/>
+	<br />
+    <hr>
+    <ShoppingCart/>
+  </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+import ProductList from '../../components/ProductList.vue'
+import ShoppingCart from '../../components/ShoppingCart.vue'
 
-		},
-		methods: {
-
-		}
-	}
+export default {
+  components: { ProductList, ShoppingCart }
+}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
 	
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
 </style>
