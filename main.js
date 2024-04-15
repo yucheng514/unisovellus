@@ -5,10 +5,8 @@ import Vue from 'vue'
 import './uni.promisify.adaptor'
 Vue.config.productionTip = false
 App.mpType = 'app'
-import store from './store'
 const app = new Vue({
-  ...App,
-  store
+  ...App
 })
 app.$mount()
 // #endif
