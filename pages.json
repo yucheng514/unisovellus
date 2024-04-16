@@ -3,10 +3,33 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "姓名+学号后四位"
+			}
+		},
+		{
+			"path": "pages/sec/sec",
+			"style": {
+				"navigationBarTitleText": "姓名+学号后四位",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
+	"tabBar": {
+		"color": "#7a7e83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"position": "top",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "比较数字大小"
+			},
+			{
+				"pagePath": "pages/sec/sec",
+				"text": "学生列表案例"
+			}
+		]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
