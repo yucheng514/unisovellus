@@ -1,44 +1,45 @@
 <template>
-	<view class="content">
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+		<br />
+		<!-- 第一次调用 -->
+		<child></child>
+		
+		<br />
+		<!-- 第二次调用 -->
+		<child>
+			<template #left>
+				<button size="mini" class="left">购物车</button>
+			</template>
+			<template #right>
+				<button size="mini" class="right">搜索</button>
+			</template>
+		</child>
+
+		<br />
+		<!-- 第三次调用 -->
+		<child>
+			<!-- <template #middle="{msg}"><text>{{msg}}</text></template> -->
+			<template #middle>
+				<text>购物车</text>
+			</template>
+			<template #right>
+				<button size="mini" class="right">搜索</button>
+			</template>
+		</child>
 	</view>
 </template>
 
 <script>
+	import child from "@/components/child.vue"
 	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
-
-		},
-		methods: {
-
+		components: {
+			child
 		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.left {
+		font-weight: bold;
 	}
 </style>
