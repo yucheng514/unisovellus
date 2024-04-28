@@ -1,44 +1,72 @@
 <template>
-	<view class="content">
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-	</view>
+	<div class="content">
+		<div>
+			Ask a yes/no question:
+			<input v-model="question" :disabled="loading" />
+			<text>{{ answer }}</text>
+		</div>
+		<text>{{ fullName }}</text>
+	</div>
+
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
+<script setup>
+	import {
+		ref,
+		watch
+	} from 'vue'
 
-		},
-		methods: {
+	const question = ref('')
+	const answer = ref('Questions usually contain a question mark. ;-)')
+	const loading = ref(false)
 
+	// watch works directly on a ref
+	watch(question, (newQuestion, oldQuestion) => {
+		if (newQuestion.includes('?') || newQuestion.includes('？')) {
+			loading.value = true
+			answer.value = 'Thinking...'
+			// fetch api 返回一个 response 对象，详见：
+			// https://developer.mozilla.org/zh-CN/docs/Web/API/Response/json
+			fetch('https://yesno.wtf/api').then(res => res.json()).then(data => {
+				answer.value = data.answer
+			}).catch(err => {
+				answer.value = 'Error!' + err
+			}).finally(() => {
+				loading.value = false
+			})
 		}
-	}
+	})
+
+
+	import {
+		reactive,
+		computed
+	} from 'vue'
+
+	const author = reactive({
+		firstName: 'John',
+		lastName: 'Doe'
+	})
+
+	const fullName = computed(() => {
+		return author.firstName + " " + author.lastName
+	})
 </script>
+
+
 
 <style>
 	.content {
 		display: flex;
 		flex-direction: column;
+		justify-content: space-evenly;
 		align-items: center;
-		justify-content: center;
+		height: 50vh;
+
 	}
 
-	
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	input {
+		margin: 10rpx 0;
+		border: 1rpx solid black;
 	}
 </style>

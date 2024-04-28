@@ -1,6 +1,6 @@
 {
-    "name" : "111",
-    "appid" : "",
+    "name" : "《UniAPP & Vue2.x》作业10",
+    "appid" : "__UNI__92E7E2B",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -68,5 +68,5 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "3"
 }
